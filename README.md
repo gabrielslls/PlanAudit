@@ -95,8 +95,6 @@ python test-non-streaming.py glm-5 --api-base http://127.0.0.1:9000
 #   --api-key    API Key（或设置环境变量 API_KEY）
 ```
 
-测试结果保存在 `results/` 目录。
-
 ## 公益声明
 
 本项目旨在：
