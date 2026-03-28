@@ -1,0 +1,23 @@
+# Evidence files (may contain sensitive data)
+evidence/*
+!evidence/.gitkeep
+
+# Videos
+videos/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
