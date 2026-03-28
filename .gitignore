@@ -2,11 +2,20 @@
 evidence/*
 !evidence/.gitkeep
 
+# Test results
+results/*
+!results/.gitkeep
+
 # Videos
 videos/
 
 # Logs
 *.log
+
+# Python
+__pycache__/
+*.py[cod]
+.ruff_cache/
 
 # OS files
 .DS_Store

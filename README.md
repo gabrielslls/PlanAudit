@@ -53,9 +53,9 @@ PlanAudit/
 │   ├── QUICK-START.md     # 简化版指南
 │   └── TEST-CASE.md       # 测试案例
 ├── tools/                 # 辅助工具
-│   └── (预留)
-└── evidence/              # 证据目录
-    └── (预留)
+│   └── test-non-streaming.py  # 非流式调用测试脚本
+├── results/               # 测试结果（不入库）
+└── evidence/              # 证据目录（不入库）
 ```
 
 ## 支持的客户端
@@ -70,6 +70,32 @@ PlanAudit/
 
 - [llm-proxy](https://github.com/gabrielslls/llm-proxy) - API 请求代理
 - OBS Studio - 屏幕录制（取证版）
+
+## 测试工具
+
+### 非流式调用测试脚本
+
+用于验证 Token 计数准确性（流式响应可能不返回 token 用量）：
+
+```bash
+cd tools
+
+# 基本用法
+python test-non-streaming.py <模型名称>
+
+# 示例
+python test-non-streaming.py glm-5
+python test-non-streaming.py glm-5 --count 5
+python test-non-streaming.py glm-5 --api-base http://127.0.0.1:9000
+
+# 参数说明
+#   model        模型名称（必填）
+#   --api-base   API 地址（默认: http://127.0.0.1:9000）
+#   --count      测试次数（默认: 10）
+#   --api-key    API Key（或设置环境变量 BAIDU_API_KEY）
+```
+
+测试结果保存在 `results/` 目录。
 
 ## 公益声明
 
