@@ -2,10 +2,6 @@
 evidence/*
 !evidence/.gitkeep
 
-# Test results
-results/*
-!results/.gitkeep
-
 # Videos
 videos/
 
