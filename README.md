@@ -92,7 +92,7 @@ python test-non-streaming.py glm-5 --api-base http://127.0.0.1:9000
 #   model        模型名称（必填）
 #   --api-base   API 地址（默认: http://127.0.0.1:9000）
 #   --count      测试次数（默认: 10）
-#   --api-key    API Key（或设置环境变量 BAIDU_API_KEY）
+#   --api-key    API Key（或设置环境变量 API_KEY）
 ```
 
 测试结果保存在 `results/` 目录。

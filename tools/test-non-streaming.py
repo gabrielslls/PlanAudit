@@ -266,18 +266,18 @@ def main():
     )
     parser.add_argument("--count", type=int, default=10, help="测试次数（默认: 10）")
     parser.add_argument(
-        "--api-key", help="API Key（也可通过环境变量 BAIDU_API_KEY 设置）"
+        "--api-key", help="API Key（也可通过环境变量 API_KEY 设置）"
     )
 
     args = parser.parse_args()
 
-    api_key = args.api_key or os.environ.get("BAIDU_API_KEY")
+    api_key = args.api_key or os.environ.get("API_KEY")
 
     if not api_key:
         print("=" * 60)
         print("请输入 API Key")
         print("=" * 60)
-        print("未检测到 BAIDU_API_KEY 环境变量，请粘贴您的 API Key：")
+        print("未检测到 API_KEY 环境变量，请粘贴您的 API Key：")
         print("（粘贴后按回车继续）")
         print()
         try:
