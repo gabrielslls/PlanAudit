@@ -10,6 +10,25 @@ PlanAudit 是一个公益活动项目，旨在帮助用户验证云服务商 Cod
 
 通过中间人代理（MITM）捕获 API 请求，统计实际调用次数，再与控制台显示的使用量对比，判断是否存在隐藏计费倍率。
 
+---
+
+## 📊 [测试结果汇总](TEST-RESULTS.md)
+
+> **你的 CodingPlan 被几倍计数了？** 查看各云厂商测试数据：
+
+| 云厂商 | 倍率 | 结论 |
+|--------|------|------|
+| 百度千帆 | 1.00 | ✅ 正常 |
+| 讯飞星辰 | 1.00 | ✅ 正常 |
+| 联通云 | 1.00 | ✅ 正常 |
+| 🔴 **火山引擎** | **6.31 倍** | 🚨 **异常** |
+
+> ⚠️ **异常发现**：火山引擎本地调用 95 次，控制台计费 600 次，**计费倍率达 6.31 倍**。
+> 
+> [→ 查看完整测试报告](TEST-RESULTS.md)
+
+---
+
 ## 快速开始
 
 ### 简化版（快速自测）
@@ -46,25 +65,39 @@ cd PlanAudit
 
 ```
 PlanAudit/
-├── README.md              # 项目说明
-├── LICENSE                # 许可证
-├── docs/                  # 文档
-│   ├── AUDIT-GUIDE.md     # 取证版指南
-│   ├── QUICK-START.md     # 简化版指南
-│   └── TEST-CASE.md       # 测试案例
-├── tools/                 # 辅助工具
-│   └── test-non-streaming.py  # 非流式调用测试脚本
-├── results/               # 测试结果（不入库）
-└── evidence/              # 证据目录（不入库）
+├── README.md                      # 项目说明
+├── TEST-RESULTS.md                # 测试结果汇总
+├── LICENSE                        # 许可证
+├── docs/                          # 文档
+│   ├── AUDIT-GUIDE.md             # 取证版指南 (opencode)
+│   ├── AUDIT-GUIDE-OPENCLAW.md    # 取证版指南 (openclaw)
+│   ├── QUICK-START.md             # 简化版指南 (opencode)
+│   ├── QUICK-START-OPENCLAW.md    # 简化版指南 (openclaw)
+│   └── TEST-CASE.md               # 测试案例
+├── tools/                         # 辅助工具
+│   └── test-non-streaming.py      # 非流式调用测试脚本
+├── results/                       # 测试结果暂存（不入库）
+└── evidence/                      # 测试证据存档（不入库）
+    ├── 百度千帆/                  # 截图证据
+    ├── 讯飞星辰/                  # 截图证据
+    ├── 联通云/                    # 截图证据
+    └── 火山引擎/                  # 完整证据（含 SHA256 校验）
 ```
 
 ## 支持的客户端
 
-| 客户端 | 状态 |
-|--------|------|
-| opencode | ✅ 已验证 |
-| openclaw | 🚧 开发中 |
-| cursor | 📋 计划中 |
+| 客户端 | 状态 | 配置目录 | 数据库路径 |
+|--------|------|----------|------------|
+| opencode | ✅ 已验证 | `$HOME/.config/opencode` | `$HOME/.local/share/opencode/opencode.db` |
+| openclaw | ⏳ 待验证 | `$HOME/.openclaw` | `$HOME/.openclaw/agents/main/sessions/` |
+| cursor | 📋 计划中 | - | - |
+
+### 客户端专用文档
+
+| 客户端 | 快速开始 | 取证指南 |
+|--------|----------|----------|
+| opencode | [QUICK-START.md](docs/QUICK-START.md) | [AUDIT-GUIDE.md](docs/AUDIT-GUIDE.md) |
+| openclaw | [QUICK-START-OPENCLAW.md](docs/QUICK-START-OPENCLAW.md) | [AUDIT-GUIDE-OPENCLAW.md](docs/AUDIT-GUIDE-OPENCLAW.md) |
 
 ## 依赖工具
 
